@@ -5,6 +5,11 @@ function injectPoddy() {
   poddyImage.id = "poddy";
   document.body.appendChild(poddyImage);
   addBlinkingEffect(poddyImage);
+
+  // Add a click event listener to navigate to learn.openshift.com
+  poddyImage.addEventListener("click", () => {
+    window.open("https://learn.openshift.com", "_blank");
+  });
 }
 
 function addBlinkingEffect(poddyImage) {
