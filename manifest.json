@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Poddy Assistant",
+  "version": "1.0",
+  "description": "Displays Poddy on OpenShift web console pages.",
+  "icons": {
+    "48": "img/poddy.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.openshift.io/*",
+        "*://*.openshift.com/*",
+        "*://*.apps-crc.testing/*"
+      ],
+      "js": ["contentScript.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "permissions": ["activeTab"]
+}

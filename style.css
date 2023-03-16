@@ -1,0 +1,9 @@
+#poddy {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: auto;
+  z-index: 1000;
+  cursor: pointer;
+}
