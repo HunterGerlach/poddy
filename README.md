@@ -40,6 +40,63 @@ Note: Poddy is not officially affiliated with Red Hat, Inc. or OpenShift.
 
 Once installed, Poddy will automatically appear in the bottom right corner of any OpenShift web console page. Simply navigate to your OpenShift web console, and Poddy will be there to brighten your container orchestration experience.
 
+## Adding Custom Private Cluster URLs
+
+If you're using Poddy Assistant with your own private OpenShift cluster and its URL is not currently listed in the extension's manifest, you can add it by following these steps:
+
+1. Open the `manifest.json` file in the extension's directory.
+
+2. Locate the `content_scripts` section, which should look like this:
+
+```json
+"content_scripts": [
+  {
+    "matches": [
+      "https://*.openshift.com/*",
+      "https://*.openshift.redhat.com/*"
+      // ... other URLs
+    ],
+    "js": ["contentScript.js"],
+    "run_at": "document_idle"
+  }
+],
+```
+
+3. Add your private cluster's URL pattern to the matches array. Make sure to include the protocol (http:// or https://) and any necessary wildcards.
+
+For example, if your private cluster's URL is https://mycluster.example.com, add this pattern to the matches array:
+
+```json
+"https://mycluster.example.com/*"
+```
+
+If your private cluster uses a wildcard subdomain, you can use a wildcard pattern like this:
+
+```json
+"https://*.example.com/*"
+```
+
+4. After adding your cluster's URL pattern, the updated content_scripts section should look like this:
+
+```json
+"content_scripts": [
+  {
+    "matches": [
+      "https://*.openshift.com/*",
+      "https://*.openshift.redhat.com/*",
+      "https://mycluster.example.com/*"
+      // ... other URLs
+    ],
+    "js": ["contentScript.js"],
+    "run_at": "document_idle"
+  }
+],
+```
+
+5. Save the changes to the manifest.json file and reload the extension in your browser. Poddy Assistant should now work with your private OpenShift cluster.
+
+> Note: Be cautious when using wildcards, as they can grant the extension access to more sites than necessary. Always try to be as specific as possible when defining URL patterns to limit the extension's scope and maintain security.
+
 ## Contribution
 
 Contributions are always welcome! To contribute to the project, please follow these steps:
