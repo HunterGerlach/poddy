@@ -11,7 +11,8 @@
       "matches": [
         "*://*.openshift.io/*",
         "*://*.openshift.com/*",
-        "*://*.apps-crc.testing/*"
+        "*://*.apps-crc.testing/*",
+        "*://*.opentlc.com/*"
       ],
       "js": ["contentScript.js"],
       "css": ["style.css"]
